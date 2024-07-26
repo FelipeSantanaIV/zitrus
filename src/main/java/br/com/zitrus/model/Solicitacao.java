@@ -1,31 +1,50 @@
 package br.com.zitrus.model;
 
-import br.com.zitrus.enums.AutorizacaoEnum;
+import br.com.zitrus.enums.PermissaoEnum;
 import br.com.zitrus.enums.SexoEnum;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "solicitacoes")
 public class Solicitacao {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @ManyToOne
     private Procedimento procedimento;
     private String nome;
     private int idade;
+    @Enumerated(EnumType.STRING)
     private SexoEnum sexo;
-    private AutorizacaoEnum autorizado;
+    @Enumerated(EnumType.STRING)
+    private PermissaoEnum permissao;
 
-    public Solicitacao(Long id, Procedimento procedimento, String nome, int idade, SexoEnum sexo, AutorizacaoEnum autorizado) {
+    public Solicitacao(Long id, Procedimento procedimento, String nome, int idade, SexoEnum sexo, PermissaoEnum permissao) {
         this.id = id;
         this.procedimento = procedimento;
         this.nome = nome;
         this.idade = idade;
         this.sexo = sexo;
-        this.autorizado = autorizado;
+        this.permissao = permissao;
     }
 
-    public Solicitacao(Procedimento procedimento, String nome, int idade, SexoEnum sexo, AutorizacaoEnum autorizado) {
+    public Solicitacao(Procedimento procedimento, String nome, int idade, SexoEnum sexo, PermissaoEnum permissao) {
         this.procedimento = procedimento;
         this.nome = nome;
         this.idade = idade;
         this.sexo = sexo;
-        this.autorizado = autorizado;
+    }
+
+    public Solicitacao(Procedimento procedimento, int idade, SexoEnum sexo) {
+        this.procedimento = procedimento;
+        this.idade = idade;
+        this.sexo = sexo;
+    }
+
+    public Solicitacao() {
+
     }
 
     public Long getId() {
@@ -68,11 +87,11 @@ public class Solicitacao {
         this.sexo = sexo;
     }
 
-    public AutorizacaoEnum getAutorizado() {
-        return autorizado;
+    public PermissaoEnum getPermissao() {
+        return permissao;
     }
 
-    public void setAutorizado(AutorizacaoEnum autorizado) {
-        this.autorizado = autorizado;
+    public void setPermissao(PermissaoEnum permissao) {
+        this.permissao = permissao;
     }
 }

@@ -8,6 +8,10 @@
 
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
+    <class>br.com.zitrus.model.Solicitacao</class>
+    <class>br.com.zitrus.model.Procedimento</class>
+    <class>br.com.zitrus.model.Regra</class>
+
     <properties>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/zitrus" />

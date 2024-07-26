@@ -7,13 +7,13 @@
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true"/>
             </column>
-            <column name="idprocedimento" type="BIGINT">
-                <constraints nullable="false" foreignKeyName="fk_regra_procedimento" references="procedimento(id)" />
+            <column name="procedimento_id" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="fk_regra_procedimento" references="procedimentos(id)" />
             </column>
             <column name="idade" type="INT">
                 <constraints nullable="false" />
             </column>
-            <column name="sexo" type="CHAR(1)">
+            <column name="sexo" type="VARCHAR(10)">
                 <constraints nullable="false" />
             </column>
         </createTable>

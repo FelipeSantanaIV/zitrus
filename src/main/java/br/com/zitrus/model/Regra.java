@@ -2,10 +2,17 @@ package br.com.zitrus.model;
 
 import br.com.zitrus.enums.SexoEnum;
 
+import javax.persistence.*;
+
+@Entity
 public class Regra {
+
+    @Id
     private Long id;
+    @ManyToOne
     private Procedimento procedimento;
     private int idade;
+    @Enumerated(EnumType.STRING)
     private SexoEnum sexo;
 
     public Regra(Long id, Procedimento procedimento, int idade, SexoEnum sexo) {
@@ -13,6 +20,10 @@ public class Regra {
         this.procedimento = procedimento;
         this.idade = idade;
         this.sexo = sexo;
+    }
+
+    public Regra() {
+
     }
 
     public Long getId() {
