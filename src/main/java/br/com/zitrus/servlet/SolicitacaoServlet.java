@@ -51,6 +51,17 @@ public class SolicitacaoServlet extends HttpServlet {
         }
     }
 
+    @Override
+    protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+            Long id = Long.parseLong(request.getParameter("id"));
+            solicitacaoDAO.deletarSolicitacao(id);
+            response.setStatus(HttpServletResponse.SC_NO_CONTENT);
+        } catch (Exception e) {
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao deletar solicitação.");
+        }
+    }
+
     private void populaIndex(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("procedimentos", procedimentoDAO.buscarTodos());
         request.setAttribute("sexos", SexoEnum.values());

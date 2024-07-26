@@ -13,7 +13,7 @@
             <column name="idade" type="INT">
                 <constraints nullable="false" />
             </column>
-            <column name="sexo" type="VARCHAR(10)">
+            <column name="sexo" type="VARCHAR(50)">
                 <constraints nullable="false" />
             </column>
         </createTable>

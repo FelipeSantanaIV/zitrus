@@ -7,8 +7,8 @@
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true"/>
             </column>
-            <column name="procedimento_id" type="BIGINT">
-                <constraints nullable="false" foreignKeyName="fk_procedimento_procedimento" references="procedimentos(id)" />
+            <column name="procedimentos_id" type="BIGINT">
+                <constraints foreignKeyName="fk_procedimento_procedimento" references="procedimentos(id)" />
             </column>
             <column name="nome" type="VARCHAR(50)">
                 <constraints nullable="false" />
@@ -16,7 +16,7 @@
             <column name="idade" type="INT">
                 <constraints nullable="false" />
             </column>
-            <column name="sexo" type="CHAR(1)">
+            <column name="sexo" type="VARCHAR(50)">
                 <constraints nullable="false" />
             </column>
             <column name="permissao" type="VARCHAR(50)">

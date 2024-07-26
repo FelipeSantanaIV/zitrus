@@ -3,29 +3,32 @@
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
     <changeSet author="root" id="4">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="procedimentos"/>
+        </preConditions>
         <insert tableName="regra">
             <column name="id" autoIncrement="true" />
-            <column name="procedimento_id" value="2"/>
+            <column name="procedimento_id" valueNumeric="4567"/>
             <column name="idade" value="20"/>
-            <column name="sexo" value="M"/>
+            <column name="sexo" value="MASCULINO"/>
         </insert>
         <insert tableName="regra">
             <column name="id" autoIncrement="true" />
-            <column name="procedimento_id" value="3"/>
+            <column name="procedimento_id" valueNumeric="6789"/>
             <column name="idade" value="10"/>
-            <column name="sexo" value="M"/>
+            <column name="sexo" value="MASCULINO"/>
         </insert>
         <insert tableName="regra">
             <column name="id" autoIncrement="true" />
-            <column name="procedimento_id" value="2"/>
+            <column name="procedimento_id" valueNumeric="4567"/>
             <column name="idade" value="30"/>
-            <column name="sexo" value="F"/>
+            <column name="sexo" value="FEMININO"/>
         </insert>
         <insert tableName="regra">
             <column name="id" autoIncrement="true" />
-            <column name="procedimento_id" value="1"/>
+            <column name="procedimento_id" valueNumeric="1234"/>
             <column name="idade" value="20"/>
-            <column name="sexo" value="M"/>
+            <column name="sexo" value="MASCULINO"/>
         </insert>
     </changeSet>
 </databaseChangeLog>

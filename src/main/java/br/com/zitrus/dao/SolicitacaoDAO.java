@@ -70,7 +70,21 @@ public class SolicitacaoDAO {
         return entityManager.createQuery(jpql, Solicitacao.class).setParameter("nome", nome).getResultList();
     }
 
-    public void excluirSolicitacao(Long solicitacaoId) {
-        String jpql = "DELETE FROM Solicitacao WHERE id = :solicitacaoId";
+    public void deletarSolicitacao(Long id) {
+        try {
+            entityManager.getTransaction().begin();
+
+            Solicitacao solicitacao = entityManager.find(Solicitacao.class, id);
+            if (solicitacao != null) {
+                entityManager.remove(solicitacao);
+            }
+
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            if (entityManager.getTransaction().isActive()) {
+                entityManager.getTransaction().rollback();
+            }
+            throw new RuntimeException(e);
+        }
     }
 }

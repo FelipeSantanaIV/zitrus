@@ -14,6 +14,19 @@
   <meta charset="UTF-8">
   <title>Zitrus - Desafio Java Servlet</title>
   <link rel="stylesheet" href="css/bootstrap.css"></link>
+  <script>
+    function deleteSolicitacao(id) {
+      fetch('solicitacao?id=' + id, {
+        method: 'DELETE'
+      }).then(response => {
+        if (response.ok) {
+          window.location.reload();
+        } else {
+          alert('Erro ao deletar solicitação');
+        }
+      });
+    }
+  </script>
 </head>
 <body>
 <jsp:include page="header.jsp"/>
@@ -73,6 +86,7 @@
   <th>Sexo</th>
   <th>Procedimento</th>
   <th>Status</th>
+  <th>Opções</th>
   </thead>
   <tbody>
   <%
@@ -88,6 +102,9 @@
     <td><%= solicitacao.getSexo().getValor() %></td>
     <td><%= solicitacao.getProcedimento().getNome() %></td>
     <td><%= solicitacao.getPermissao().getDescricao() %></td>
+    <td>
+      <button onclick="deleteSolicitacao(<%= solicitacao.getId() %>)" class="btn btn-danger">Deletar</button>
+    </td>
   </tr>
   <%
     }
